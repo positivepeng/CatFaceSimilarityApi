@@ -30,8 +30,8 @@ def comparePicWithPath(filepath1,filepath2):
     cutFaceAndSave(filepath1)
     cutFaceAndSave(filepath2)
 
-    img1 = Image.open(filename1)
-    img2 = Image.open(filename2)
+    img1 = Image.open(filepath1)
+    img2 = Image.open(filepath2)
 
     return comparePicWithImg(img1,img2)
 

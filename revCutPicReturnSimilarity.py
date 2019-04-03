@@ -1,7 +1,8 @@
 # coding:utf-8
-from flask import Flask, request
 import os
 import cv2
+from flask import Flask, request
+from datetime import timedelta
 from compareTwoCutCatFace import comparePicWithPath
 from preprocessCatFace import cutFaceAndSave
 
@@ -30,17 +31,16 @@ def uploadBytePic():
         f1.write(pic1Bytes)
     with open(pic2Name,"wb") as f2:
         f2.write(pic2Bytes)
-    
-    basepath = os.path.dirname(__file__)
-    filename1 = basepath+"/"+pic1Name
-    filename2 = basepath+"/"+pic2Name
+
+    filename1 = pic1Name
+    filename2 = pic2Name
     
     print("filename",filename1,filename2)
     
     value = comparePicWithPath(filename1,filename2)
 
-    os.remove(pic1Name)
-    os.remove(pic2Name)
+    os.remove(filename1)
+    os.remove(filename2)
 
     return str(value)
 
